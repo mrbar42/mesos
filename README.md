@@ -9,13 +9,13 @@ Though the host docker sock must be linked in otherwise it won't work.
 
 ## Master
 ```
-docker run -d --entrypoint=mesos-master mrbar42/docker-mesos:0.27.1
+docker run -d --entrypoint=mesos-master mrbar42/mesos:0.27.2
 ```
 
 ## Slave
 base:
 ```
-docker run -d --entrypoint=mesos-slave mrbar42/docker-mesos:0.27.1
+docker run -d --entrypoint=mesos-slave mrbar42/mesos:0.27.2
 ```
 
 ## Real world examples:
@@ -28,7 +28,7 @@ docker run -d \
     - "MESOS_PORT=5050"
     - "MESOS_QUORUM=2"
     - "MESOS_WORK_DIR=/var/lib/mesos"
-    mrbar42/docker-mesos:0.27.1
+    mrbar42/mesos:0.27.1
 ```
 
 ### Slave
@@ -43,10 +43,10 @@ docker run -d \
     -e "MESOS_WORK_DIR=/tmp/mesos" \
     -e "MESOS_RESOURCES=mem:2000;ports:[31000-33000]" \
     -e "MESOS_ATTRIBUTES=region:america;location:us-west;host:aws" \
-    -v //tmp/mesos-slave:/tmp/mesos \
+    -v /tmp/mesos-slave:/tmp/mesos \
     -v /proc:/host/proc:ro \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /cgroup:/cgroup \
     -v /sys:/sys \
-    mrbar42/docker-mesos:0.27.1
+    mrbar42/mesos:0.27.1
 ```
